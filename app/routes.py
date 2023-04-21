@@ -58,4 +58,5 @@ def handle_books():
 def register_book():
     new_book = Book(7,"100 años de soledad","una historia de realismo magico")
     books.append(new_book)
-    return books
+    result = handle_books()
+    return result
