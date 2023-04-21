@@ -24,5 +24,5 @@ def broken_endpoint():
         "hobbies": ["Fishing", "Swimming", "Watching Reality Shows"]
     }
     new_hobby = "Surfing"
-    response_body["hobbies"] + new_hobby
+    response_body["hobbies"].append(new_hobby)
     return response_body
