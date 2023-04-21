@@ -53,3 +53,9 @@ def handle_books():
             "description": book.description
         })
     return jsonify(books_response)
+
+@books_bp.route("/garcia-marquez",methods=["POST"])
+def register_book():
+    new_book = Book(7,"100 años de soledad","una historia de realismo magico")
+    books.append(new_book)
+    return books
