@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify, make_response,abort
+#from flask import Blueprint, jsonify, make_response,abort
 
-hello_world_bp = Blueprint("hello_world", __name__)
+"""hello_world_bp = Blueprint("hello_world", __name__)
 
 
 @hello_world_bp.route("/hello-world", methods=["GET"])
@@ -26,32 +26,38 @@ def broken_endpoint():
     new_hobby = "Surfing"
     response_body["hobbies"].append(new_hobby)
     return response_body
+    """
 
-#book coding starts now...
+#book hard-coding starts now...
 
+#books_bp = Blueprint("books", __name__, url_prefix="/books")
+
+"""
 class Book:
     def __init__(self, id, title, description):
         self.id = id
         self.title = title
         self.description = description
 
+    def make_book_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "description": self.description
+        }
+
 books = [
     Book(1, "Fictional Book Title", "A fantasy novel set in an imaginary world."),
     Book(2, "Fictional Book Title", "A fantasy novel set in an imaginary world."),
     Book(3, "Fictional Book Title", "A fantasy novel set in an imaginary world.")
-] 
+] """
 
-books_bp = Blueprint("books", __name__, url_prefix="/books")
-
+"""
 @books_bp.route("", methods=["GET"])
 def handle_books():
     books_response = []
     for book in books:
-        books_response.append({
-            "id": book.id,
-            "title": book.title,
-            "description": book.description
-        })
+        books_response.append(book.make_book_dict())
     return jsonify(books_response)
 
 @books_bp.route("/garcia-marquez",methods=["POST"])
@@ -64,11 +70,7 @@ def register_book():
 @books_bp.route("/<book_id>",methods=["GET"])
 def handle_book(book_id):
     book = validate_book(book_id)
-    return {
-        "id": book.id,
-        "title":book.title,
-        "description": book.description
-    }
+    return book.make_book_dict()
         
 def validate_book(book_id):
     try:
@@ -83,4 +85,7 @@ def validate_book(book_id):
     
     abort(make_response({"message": f"book {book_id} not found"}, 404))
 
-        
+"""        
+#connecting FLAKS app to database to be able to not only read, but to create, update, delete... all of CRUD
+
+
