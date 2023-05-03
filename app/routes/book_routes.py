@@ -4,6 +4,7 @@ from flask import Blueprint, jsonify, make_response, request, abort
 
 books_bp = Blueprint("books", __name__, url_prefix="/books")
 
+
 @books_bp.route("",methods=["GET"])
 def handle_books():
     books = Book.query.all()
