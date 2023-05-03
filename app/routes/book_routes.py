@@ -26,6 +26,8 @@ def create_book():
     db.session.commit()
 
     return make_response(f"Book {new_book.title} successfully created", 201)
+    #return make_response(jsonify(f"Book {new_book.title} successfully created"), 201) (would've had to use this instead of response_body = response.get_data(as_text=True) at test_routes)
+
 
 @books_bp.route("/<id>",methods=["GET"])
 def handle_book(id):
